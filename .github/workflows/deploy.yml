@@ -1,4 +1,4 @@
-name: Deployment Workflow
+name: Deploy to Hetzner Server
 
 on:
   push:
@@ -6,18 +6,18 @@ on:
       - main
 
 jobs:
-  setup:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    # Add any other steps for testing here
 
-      - name: Deploy to Hetzner
-        run: |
-          ssh -o StrictHostKeyChecking=accept-new root@91.107.196.114 << EOF
+    - name: Deploy to Hetzner
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HETZNER_SERVER_IP }}
+        username: ${{ secrets.HETZNER_USERNAME }}
+        key: ${{ secrets.HETZNER_SSH_KEY }}
+        script: |
           cd /
           git pull
           # Any other deployment commands
-          EOF
