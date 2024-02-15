@@ -1,5 +1,12 @@
+name: Deployment Workflow
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  deploy:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH
