@@ -16,7 +16,7 @@ jobs:
 
       - name: Deploy to Hetzner
         run: |
-          ssh youssef@94.130.168.61 << EOF
+          ssh root@91.107.196.114 << EOF
           cd /
           git pull
           # Any other deployment commands
