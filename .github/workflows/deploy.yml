@@ -5,8 +5,8 @@
 
     name: Deploy to Hetzner
       run: |
-        ssh user@your_server_ip << EOF
-          cd /path/to/your/app
+        ssh youssef@94.130.168.61 << EOF
+          cd /
           git pull
           # Any other deployment commands
         EOF
