@@ -16,7 +16,8 @@ jobs:
 
       - name: Deploy to Hetzner
         run: |
-          ssh root@91.107.196.114 << EOF
+          echo "${{ secrets.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          ssh root@91.107.196.114
           cd /
           git pull
           # Any other deployment commands
